@@ -10,6 +10,12 @@ source env/bin/activate
 ```
 pip install -r requirements.txt
 ```
+```
+export FLASK_APP=project
+```
+```
+export FLASK_DEBUG=1
+```
 
 # docker 開発環境構築
 ```

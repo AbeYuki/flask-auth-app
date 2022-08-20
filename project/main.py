@@ -1,5 +1,4 @@
-from flask import Blueprint, render_template
-from flask_login import login_required, current_user
+from flask import Blueprint
 from . import db
 
 main = Blueprint('main', __name__)
@@ -12,3 +11,11 @@ def index():
 @login_required
 def profile():
     return render_template('profile.html', name=current_user.name)
+
+@auth.route('/login')
+def login():
+    return render_template('login.html')
+
+@auth.route('/signup')
+def signup():
+    return render_template('signup.html')
