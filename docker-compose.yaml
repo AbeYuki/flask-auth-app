@@ -9,8 +9,10 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - FLASK_APP=/usr/src/app/app.py
+      - FLASK_APP=project
+      - FLASK_DEBUG=1
       - FLASK_ENV=development
+    #tty: true
     command: "flask run --host='0.0.0.0' --port='5000'"
   db:
     image: mariadb
