@@ -17,7 +17,7 @@ export FLASK_APP=project
 export FLASK_DEBUG=1
 ```
 ```
-FLASK_ENV=development
+export FLASK_ENV=development
 ```
 
 # docker 開発環境構築
