@@ -27,3 +27,8 @@ docker compose build --no-cache
 ```
 docker compose up -d
 ```
+
+# create sqlite
+python -c "
+from project import db, create_app, models
+db.create_all(app=create_app())"
