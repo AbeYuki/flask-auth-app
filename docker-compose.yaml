@@ -8,19 +8,14 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "5000:5000"
-    environment:
-      - FLASK_APP=project
-      - FLASK_DEBUG=1
-      - FLASK_ENV=development
+    env_file:
+      - app.env
+      - db.env
     #tty: true
     command: "flask run --host='0.0.0.0' --port='5000'"
   db:
     image: mariadb
     ports: 
       - "3306:3306"
-    environment:
-      - MARIADB_ROOT_PASSWORD=MARIADB
-      - MARIADB_NAME=MARIADB
-      - MARIADB_DB=MARIADB
-      - MARIADB_USER=MARIADB
-      - MARIADB_PASSWORD=password
+    env_file:
+      - db.env

@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager 
 import string
 import secrets
+import os
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
@@ -14,7 +15,14 @@ def create_app():
     alphabet = string.ascii_letters + string.digits
     secret = ''.join(secrets.choice(alphabet) for i in range(24))
     app.config['SECRET_KEY'] = secret
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+    app.config['SQLALCHEMY_DATABASE_URI']  = 'mysql+pymysql://{user}:{password}@{host}/{database}?charset=utf8'.format(
+      **{
+        'user': os.getenv('MARIADB_USER'),
+        'password': os.getenv('MARIADB_PASSWORD'),
+        'host': os.getenv('DB_HOST'),
+        'database': os.getenv('MARIADB_DATABASE'),
+      })
 
     db.init_app(app)
 
