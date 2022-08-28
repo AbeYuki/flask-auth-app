@@ -54,7 +54,7 @@ db.create_all(app=create_app())"
 ```
 flask run
 ```
-仮想環境の無効化する場合  
+仮想環境を無効化する場合  
 ```
 deactivate
 ```
