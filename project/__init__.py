@@ -16,6 +16,7 @@ def create_app():
     secret = ''.join(secrets.choice(alphabet) for i in range(24))
     app.config['SECRET_KEY'] = secret
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SQLALCHEMY_DATABASE_URI']  = 'mysql+pymysql://{user}:{password}@{host}/{database}?charset=utf8'.format(
       **{
         'user': os.getenv('MARIADB_USER'),
